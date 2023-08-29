@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from './components/Providers'
-import { SignInButton } from './components/SignInButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,13 +16,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="h-full bg-white">
+      <body className={`${inter.className} h-full`}>
         <Providers>
-          <header className="flex justify-end gap-4 bg-gradient-to-b from-white to-gray-200 shadow">
-            <SignInButton />
-          </header>
-
           {children}
         </Providers>
       </body>
