@@ -22,8 +22,9 @@ export default async function Home() {
           </div>
         </div>
       </header>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center p-24">
         <h1>Hello from calculator!</h1>
+        <h2>Your user id is {session.user.id}</h2>
       </main>
     </>
   )

@@ -12,8 +12,11 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const requestData = insertUserSchema.parse(await request.json())
-    const newUser = await db.insert(users).values({email: requestData.email})
-    return NextResponse.json(newUser);
+
+    await db.insert(users).values({email: requestData.email})
+    const userData = await db.select().from(users).where(eq(users.email, requestData.email)).limit(1)
+    return NextResponse.json(userData[0]);
+
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: error.message }, { status: 400 })
